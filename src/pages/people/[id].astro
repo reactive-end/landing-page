@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "../../layouts/Layout.astro"
+
+export async function getStaticPaths() {
+  const peoples = await getCollection('people')
+  
+  return peoples.map((people) => ({
+    params: { id: people.id },
+    props: { people }
+  }))
+}
+
+const { people } = Astro.props
+const { id, data } = people
+const { name, description, image } = data
+
+---
+
+<Layout title={`${name}`}>
+  <main class="flex gap-4 justify-center items-center grow p-16 bg-law-pattern bg-cover bg-center">
+    <article class="bg-slate-100 rounded-xl flex flex-col sm:flex-row overflow-hidden gap-5 sm:gap-2">
+      <img class="rounderd h-auto w-48" src={`/${image}.jpg`} alt={name} transition:name={`img-${id}`}>
+      <div class="flex flex-col gap-4 p-4 justify-center">
+        <h1 class="text-5xl font-light">{name}</h1>
+        <p class="text-slate-500 text-justify">{description}</p>
+        <a href="/" class="bg-slate-300 rounded border-2 border-slate-300 py-1 px-4 inline-block">Volver</a>
+      </div>
+    </article>
+  </main>
+</Layout>
