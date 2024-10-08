@@ -23,7 +23,11 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
+	* {
+		@apply box-border m-0 p-0;
+	}
+
 	body {
-		@apply flex flex-col bg-slate-50 text-slate-700 min-h-screen;
+		@apply flex flex-col bg-slate-50 text-slate-700 min-h-screen overflow-x-hidden;
 	}
 </style>

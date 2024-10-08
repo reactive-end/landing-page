@@ -11,80 +11,96 @@ import Instagram from '@components/Instagram.astro'
 const people = await getCollection('people')
 ---
 
-<Layout title="Legal Company Inc.">
-	<nav class="flex items-center justify-evenly sm:justify-normal p-4 bg-slate-800 text-slate-100 text-2xl gap-6">
-		<span title="Facebook">
-			<Facebook />
-		</span>
-		<span title="Whatsapp">
-			<Whatsapp />
-		</span>
-		<span title="Instagram">
-			<Instagram />
-		</span>
-		<span title="Twitter">
-			<Twitter />
-		</span>
-	</nav>
+<Layout title='Lawyer'>
+  <header class='bg-slate-800/50 p-5 fixed top-0 left-0 w-full flex justify-between'>
+    <span class='text-white'>Empresa</span>
+    <div class='flex gap-x-4 text-white text-2xl'>
+      <Whatsapp />
+      <Twitter />
+      <Facebook />
+      <Instagram />
+    </div>
+  </header>
 
-	<main class="flex flex-col">
-		<section class="flex flex-col justify-center items-center gap-7 min-h-screen p-10 bg-law-pattern bg-cover bg-center text-slate-100">
-			<h1 class="font-light text-center text-5xl md:text-7xl">Legal Company</h1>
-			<i class="text-3xl text-center">“Tú sueñas, nosotros lo hacemos”</i>
-			<p class="w-5/6 text-center">En Legal Company Inc., llevamos más de 10 años brindando soluciones legales personalizadas y efectivas a nuestros clientes. Somos un equipo de abogados altamente calificados y especializados en diversas áreas del derecho, como civil, penal, laboral y familiar.</p>
-			<button class="px-4 py-2 border-slate-100 border-2 rounded-lg uppercase tracking-wider hover:scale-110 hover:bg-slate-100 hover:text-slate-600 transition-all">Contactanos</button>
-		</section>
-		
-		<section class="flex flex-col gap-8 p-10">
-			<article class="flex flex-col sm:flex-row items-center gap-5 sm:gap-1 bg-slate-100 rounded p-4">
-				<img src="/card-1.jpg" alt="Casa Legal" class="w-96 h-auto rounded">
-				<div class="flex flex-col gap-3 justify-center items-center">
-					<h2 class="text-5xl font-medium">Casa Legal</h2>
-					<p class="text-slate-500 w-3/4 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ea alias id. Sequi unde assumenda ducimus iste obcaecati numquam tempora! Unde facere repellendus impedit sunt harum quam fugit voluptatum eum.</p>
-				</div>
-			</article>
+  <main>
+    <section class='flex flex-col justify-center items-center sm:justify-end sm:items-end p-6 bg-law-pattern bg-no-repeat bg-cover min-h-screen'>
+      <h1 class='text-center sm:text-right text-white text-6xl font-bold w-2/4'>
+        <span class='text-green-400'>Tú sueñas</span> nosotros lo hacemos
+      </h1>
+    </section>
 
-			<article class="flex flex-col sm:flex-row-reverse items-center gap-5 sm:gap-1 bg-slate-100 rounded p-4">
-				<img src="/card-2.jpg" alt="Casa Legal" class="w-96 h-auto rounded">
-				<div class="flex flex-col gap-3 justify-center items-center">
-					<h2 class="text-5xl font-medium">Mediadores</h2>
-					<p class="text-slate-500 w-3/4 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ea alias id. Sequi unde assumenda ducimus iste obcaecati numquam tempora! Unde facere repellendus impedit sunt harum quam fugit voluptatum eum.</p>
-				</div>
-			</article>
-		</section>
+    <section class='flex flex-col sm:flex-row min-h-screen p-4 justify-center items-center bg-slate-50 gap-4'>
+      <article class='flex flex-col gap-y-4 flex-grow justify-center items-center'>
+        <img class='rounded-md w-96 h-64' src="/card-1.jpg">
+        <button class='bg-green-600 inline-block px-6 py-2 cursor-pointer text-white text-center rounded-md'>Adquiere Nuestros Servicios</button>
+      </article>
+      <article class='flex flex-col gap-y-4 flex-grow justify-center items-center'>
+        <img class='rounded-md w-96 h-64' src="/card-2.jpg">
+        <button class='bg-green-600 inline-block px-6 py-2 cursor-pointer text-white text-center rounded-md'>Trabaja con Nosotros</button>
+      </article>
+    </section>
 
-		<section class="flex flex-col gap-4 bg-slate-100 min-w-full">
-			<h2 class="text-5xl font-light text-center p-10">Líderes</h2>
-			<div class="flex flex-col gap-6 py-7">
-				{
-					people.map(element => {
-						const { id, data } = element
-						const { name, description, subDescription, slogan, image, phone } = data
+    <section class='flex flex-col p-4 min-h-screen gap-y-5 items-center justify-center'>
+      <h2 class='text-green-400 font-extrabold text-center text-7xl'>Sobre Nosotros</h2>
+      <p class='text-center text-gray-400 text-xl w-5/6'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum deserunt id sunt tempora assumenda vero cumque, laborum optio impedit, dignissimos mollitia labore laboriosam minima animi voluptatem, quas perferendis debitis iusto.</p>
+    </section>
 
-						return (
-							<article class="flex flex-col items-center gap-4 bg-slate-200 border-2 border-slate-200 p-10">
-								<img class="w-56 h-56 object-cover" src={`/${image}.jpg`} alt={`${name}`} transition:name={`img-${id}`} style="border-radius: 100%;">
-								<div class="flex flex-col justify-center items-center gap-4">
-									<h3 class="text-4xl font-medium text-center sm:text-left">{name}</h3>
-									<p class="italic text-2xl text-slate-400 text-center w-3/4">
-										<span class="font-bold text-3xl">“</span>{slogan}<span class="font-bold text-3xl">”</span>
-									</p>
-									<span class="flex gap-1 items-center text-lg text-green-600 justify-center sm:justify-normal">
-										<Whatsapp />
-										{phone}
-									</span>
-									<p class="text-slate-500 w-3/4 text-center">{description}</p>
-									<p class="text-slate-500 w-3/4 text-center">{subDescription}</p>
-								</div>
-							</article>
-						)
-					})
-				}
-			</div>
-		</section>
-	</main>
+    <section class='p-4 min-h-screen'>
+      <div class='bg-green-500 rounded-md p-4 flex flex-col gap-y-2'>
+        <article class='flex flex-col gap-y-4 p-8'>
+          <h3 class='text-white text-5xl font-extrabold'>Nuestra Misión</h3>
+          <p class='text-white'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam alias et sit rem voluptatibus, fuga quaerat modi ipsum quae, deserunt, nam consequatur nobis saepe! Neque quae doloremque voluptate necessitatibus reprehenderit!</p>
+        </article>
 
-	<footer class="flex items-center justify-center p-4 bg-slate-800 text-slate-100">
-		<span>Legal Company Inc. ©</span>
-	</footer>
+        <article class='flex flex-col gap-y-4 p-8'>
+          <h3 class='text-white text-5xl font-extrabold'>Nuestra Visión</h3>
+          <p class='text-white'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam alias et sit rem voluptatibus, fuga quaerat modi ipsum quae, deserunt, nam consequatur nobis saepe! Neque quae doloremque voluptate necessitatibus reprehenderit!</p>
+        </article>
+      </div>
+    </section>
+
+    <section class='flex flex-col p-4 min-h-screen gap-y-5 items-center justify-center'>
+      <h2 class='text-green-400 font-extrabold text-center text-7xl'>Nuestras Lideres</h2>
+      <div class='p-8 flex flex-col gap-5'>
+        {
+          people.map(element => {
+            const { data } = element
+            const { name, description, subDescription, slogan, image, phone } = data
+          
+            return (
+              <article class='bg-slate-200 rounded-md p-8 flex flex-col sm:flex-row gap-4'>
+                <div class='flex flex-col gap-4 justify-center'>
+                  <img src={`/${image}.jpg`} class='w-full sm:m-w-48 sm:m-h-64 rounded-md' />
+                </div>
+                
+                <div class='flex flex-col p-6 gap-6 sm:gap-2'>
+                  <div class='flex flex-col gap-2'>
+                    <h2 class='text-green-400 text-center sm:text-left font-extrabold text-3xl'>{name}</h2>
+                    <p class='text-xl text-gray-500 text-center sm:text-left'>
+                      <span class='text-gray-500 text-2xl'>‟</span>
+                        {slogan}
+                      <span class='text-gray-500 text-2xl'>„</span>
+                    </p>
+                  </div>
+
+                  <div class='flex flex-col gap-2'>
+                    <p class='text-gray-500 text-justify sm:text-left'>{description}</p>
+                    <p class='text-gray-500 text-justify sm:text-left'>{subDescription}</p>
+                  </div>
+                </div>
+              </article>
+            )
+          })
+        }
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-green-600 p-6 text-white flex flex-col gap-4'>
+    <h4 class='font-extrabold text-2xl'>Contactanos</h4>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur nesciunt quas laudantium ab animi iusto eius beatae aliquid vel dicta ut accusantium</p>
+    <div class='p-4'>
+      <span class='text-center block'>© 2024 Empresa</span>
+    </div>
+  </footer>
 </Layout>
