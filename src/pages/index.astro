@@ -59,7 +59,7 @@ const people = await getCollection('people')
       </div>
     </section>
 
-    <section class='flex flex-col p-4 min-h-screen gap-y-5 items-center justify-center'>
+    <section class='flex flex-col sm:p-4 min-h-screen gap-y-5 items-center justify-center'>
       <h2 class='text-green-400 font-extrabold text-center text-7xl'>Nuestras Lideres</h2>
       <div class='p-8 flex flex-col gap-5'>
         {
@@ -73,7 +73,7 @@ const people = await getCollection('people')
                   <img src={`/${image}.jpg`} class='w-full sm:m-w-48 sm:m-h-64 rounded-md' />
                 </div>
                 
-                <div class='flex flex-col p-6 gap-6 sm:gap-2'>
+                <div class='flex flex-col p-6 gap-6 sm:gap-4'>
                   <div class='flex flex-col gap-2'>
                     <h2 class='text-green-400 text-center sm:text-left font-extrabold text-3xl'>{name}</h2>
                     <p class='text-xl text-gray-500 text-center sm:text-left'>
@@ -84,8 +84,8 @@ const people = await getCollection('people')
                   </div>
 
                   <div class='flex flex-col gap-2'>
-                    <p class='text-gray-500 text-justify sm:text-left'>{description}</p>
-                    <p class='text-gray-500 text-justify sm:text-left'>{subDescription}</p>
+                    <p class='text-gray-500'>{description}</p>
+                    <p class='text-gray-500'>{subDescription}</p>
                   </div>
                 </div>
               </article>
@@ -97,8 +97,8 @@ const people = await getCollection('people')
   </main>
 
   <footer class='bg-green-600 p-6 text-white flex flex-col gap-4'>
-    <h4 class='font-extrabold text-2xl'>Contactanos</h4>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur nesciunt quas laudantium ab animi iusto eius beatae aliquid vel dicta ut accusantium</p>
+    <h4 class='font-extrabold text-2xl text-center sm:text-left'>Contactanos</h4>
+    <p class='text-center sm:text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur nesciunt quas laudantium ab animi iusto eius beatae aliquid vel dicta ut accusantium</p>
     <div class='p-4'>
       <span class='text-center block'>© 2024 Empresa</span>
     </div>
