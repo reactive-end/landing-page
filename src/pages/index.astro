@@ -30,7 +30,7 @@ const people = await getCollection('people')
 	<main class="flex flex-col">
 		<section class="flex flex-col justify-center items-center gap-7 min-h-screen p-10 bg-law-pattern bg-cover bg-center text-slate-100">
 			<h1 class="font-light text-center text-5xl md:text-7xl">Legal Company</h1>
-			<i class="text-3xl text-center">"Tu socio legal de confianza"</i>
+			<i class="text-3xl text-center">“Tú sueñas, nosotros lo hacemos”</i>
 			<p class="w-5/6 text-center">En Legal Company Inc., llevamos más de 10 años brindando soluciones legales personalizadas y efectivas a nuestros clientes. Somos un equipo de abogados altamente calificados y especializados en diversas áreas del derecho, como civil, penal, laboral y familiar.</p>
 			<button class="px-4 py-2 border-slate-100 border-2 rounded-lg uppercase tracking-wider hover:scale-110 hover:bg-slate-100 hover:text-slate-600 transition-all">Contactanos</button>
 		</section>
@@ -53,28 +53,30 @@ const people = await getCollection('people')
 			</article>
 		</section>
 
-		<section class="flex flex-col gap-4 bg-slate-100 min-w-full p-10">
-			<h2 class="text-5xl font-light text-center">Abogados</h2>
-			<div class="flex flex-col gap-6">
+		<section class="flex flex-col gap-4 bg-slate-100 min-w-full">
+			<h2 class="text-5xl font-light text-center p-10">Líderes</h2>
+			<div class="flex flex-col gap-6 py-7">
 				{
 					people.map(element => {
 						const { id, data } = element
-						const { name, description, image, phone } = data
+						const { name, description, subDescription, slogan, image, phone } = data
 
 						return (
-							<a href={`/people/${id}`}>
-								<article class="flex flex-col sm:flex-row items-center gap-1 bg-slate-200 rounded border-2 border-slate-200 p-2 hover:scale-105 transition-all cursor-pointer">
-									<img class="w-48 h-auto rounded-lg object-cover" src={`/${image}.jpg`} alt={`${name}`} transition:name={`img-${id}`}>
-									<div class="flex flex-col justify-center items-center gap-2">
-										<h3 class="text-4xl font-medium text-center sm:text-left">{name}</h3>
-										<span class="flex gap-1 items-center text-lg text-green-600 justify-center sm:justify-normal">
-											<Whatsapp />
-											{phone}
-										</span>
-										<p class="text-slate-500 w-3/4 text-center">{description}</p>
-									</div>
-								</article>
-							</a>
+							<article class="flex flex-col items-center gap-4 bg-slate-200 border-2 border-slate-200 p-10">
+								<img class="w-56 h-56 object-cover" src={`/${image}.jpg`} alt={`${name}`} transition:name={`img-${id}`} style="border-radius: 100%;">
+								<div class="flex flex-col justify-center items-center gap-4">
+									<h3 class="text-4xl font-medium text-center sm:text-left">{name}</h3>
+									<p class="italic text-2xl text-slate-400 text-center w-3/4">
+										<span class="font-bold text-3xl">“</span>{slogan}<span class="font-bold text-3xl">”</span>
+									</p>
+									<span class="flex gap-1 items-center text-lg text-green-600 justify-center sm:justify-normal">
+										<Whatsapp />
+										{phone}
+									</span>
+									<p class="text-slate-500 w-3/4 text-center">{description}</p>
+									<p class="text-slate-500 w-3/4 text-center">{subDescription}</p>
+								</div>
+							</article>
 						)
 					})
 				}
