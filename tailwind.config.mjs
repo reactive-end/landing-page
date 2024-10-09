@@ -5,6 +5,9 @@ export default {
     extend: {
 			backgroundImage: {
         'law-pattern': "url('/page.jpg')",
+      },
+      colors: {
+        'custom': '#234665'
       }
 		}
   },
